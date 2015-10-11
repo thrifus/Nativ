@@ -1,0 +1,258 @@
+#!/bin/bash
+
+############################
+##                        ##
+##         Native         ##
+##    By: Patrick Hart    ##
+##                        ##
+############################
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+#--- Check for Homebrew and install if we don't have it
+if [[ $(brew) = "-bash: brew: command not found" ]]
+then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+    echo "Homebrew already installed!"
+fi
+
+#--- Update Homebrew recipes
+brew update
+
+#--- Install GNU core utilities (those that come with OS X are outdated)
+if [[ $(brew ls --versions coreutils) != "" ]]
+then
+    echo "coreutils already installed!"
+else
+    brew install coreutils
+fi
+
+#--- Install GNU find, locate, updatedb, and xargs (g-prefixed)
+if [[ $(brew ls --versions findutils) != "" ]]
+then
+    echo "findutils already installed!"
+else
+    brew install findutils
+fi
+
+#--- Install Bash 4
+brew install bash
+
+#--- Install more recent versions of some OS X tools
+brew tap homebrew/dupes
+brew install homebrew/dupes/grep
+
+#--- Install others
+if [[ $(brew ls --versions graphicsmagick) != "" ]]
+then
+    echo "graphicsmagick already installed!"
+else
+    brew install graphicsmagick
+fi
+if [[ $(brew ls --versions webkit2png) != "" ]]
+then
+    echo "webkit2png already installed!"
+else
+    brew install webkit2png
+fi
+if [[ $(brew ls --versions rename) != "" ]]
+then
+    echo "rename already installed!"
+else
+    brew install rename
+fi
+if [[ $(brew ls --versions zopfli) != "" ]]
+then
+    echo "zopfli already installed!"
+else
+    brew install zopfli
+fi
+if [[ $(brew ls --versions ffmpeg) != "" ]]
+then
+    echo "ffmpeg already installed!"
+else
+    brew install ffmpeg
+fi
+if [[ $(brew ls --versions python) != "" ]]
+then
+    echo "python already installed!"
+else
+    brew install python
+fi
+if [[ $(brew ls --versions trash) != "" ]]
+then
+    echo "trash already installed!"
+else
+    brew install trash
+fi
+if [[ $(brew ls --versions node) != "" ]]
+then
+    echo "node already installed!"
+else
+    brew install node
+fi
+if [[ $(brew ls --versions tree) != "" ]]
+then
+    echo "tree already installed!"
+else
+    brew install tree
+fi
+if [[ $(brew ls --versions ack) != "" ]]
+then
+    echo "ack already installed!"
+else
+    brew install ack
+fi
+if [[ $(brew ls --versions hub) != "" ]]
+then
+    echo "hub already installed!"
+else
+    brew install hub
+fi
+if [[ $(brew ls --versions git) != "" ]]
+then
+    echo "git already installed!"
+else
+    brew install git
+fi
+if [[ $(brew -ls --versions pidof) != "" ]]
+then
+    echo "pidof already installed!"
+else
+    brew install pidof
+fi
+
+#--- Link Python apps to /Applications/
+brew linkapps python
+
+#--- Install the things I've made
+if [[ $(brew ls --versions tortle) != "" ]]
+then
+    echo "Tortle already installed!"
+else
+    brew tap thrifus/Tortle
+    brew install tortle
+fi
+
+#--- Cleanup
+brew cleanup
+
+#--- Install Homebrew Cask
+if [[ $(brew ls --versions brew-cask) != "" ]]
+then
+    echo "Homebrew Cask already installed!"
+else
+    brew install caskroom/cask/brew-cask
+fi
+
+######## WORK ON THE INSTALL CHECKING OF THIS LATER! ##########
+#--- Install some apps with Homebrew Cask
+#--- If you want beta versions, uncomment this:
+#brew tap caskroom/versions
+brew cask install --appdir="/Applications" google-chrome
+brew cask install --appdir="/Applications" qlcolorcode
+brew cask install --appdir="/Applications" obs
+brew cask install --appdir="/Applications" transmit
+brew cask install --appdir="/Applications" appcleaner
+brew cask install --appdir="/Applications" hazel
+brew cask install --appdir="/Applications" qlmarkdown
+brew cask install --appdir="/Applications" vagrant
+brew cask install --appdir="/Applications" flash
+brew cask install --appdir="/Applications" qlprettypatch
+brew cask install --appdir="/Applications" virtualbox
+brew cask install --appdir="/Applications" atom
+brew cask install --appdir="/Applications" flux
+brew cask install --appdir="/Applications" caffeine
+brew cask install --appdir="/Applications" qlstephen
+brew cask install --appdir="/Applications" github-desktop
+brew cask install --appdir="/Applications" quicklook-json
+brew cask install --appdir="/Applications" skype
+brew cask install --appdir="/Applications" transmission
+brew cask install --appdir="/Applications" keka
+brew cask install --appdir="/Applications" imageoptim
+
+######## WORK ON THE INSTALL CHECKING OF THIS LATER! ##########
+#--- Install some cool fonts
+brew tap caskroom/fonts
+brew cask install font-m-plus
+brew cask install font-clear-sans
+brew cask install font-roboto
+brew cask install font-ubuntu
+brew cask install font-ubuntu-mono-powerline
+brew cask install font-lato
+brew cask install font-cabin
+brew cask install font-montserrat
+brew cask install font-montserrat-alternates
+
+clear
+
+######## WORK ON THE INSTALL CHECKING OF THIS LATER! ##########
+touch ~/Desktop/homebrewer_install_log.txt
+chmod 0777 ~/Desktop/homebrewer_install_log.txt
+echo "List of stuff that was just installed:" >> ~/Desktop/homebrewer_install_log.txt
+echo >> ~/Desktop/homebrewer_install_log.txt
+echo "Command Line Tools:" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Homebrew" >> ~/Desktop/homebrewer_install_log.txt
+echo "	coreutils" >> ~/Desktop/homebrewer_install_log.txt
+echo "	findutils" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Bash 4 (Update)" >> ~/Desktop/homebrewer_install_log.txt
+echo "	grep (Update)" >> ~/Desktop/homebrewer_install_log.txt
+echo "	graphicsmagick" >> ~/Desktop/homebrewer_install_log.txt
+echo "	webkit2png" >> ~/Desktop/homebrewer_install_log.txt
+echo "	rename" >> ~/Desktop/homebrewer_install_log.txt
+echo "	zopfli" >> ~/Desktop/homebrewer_install_log.txt
+echo "	ffmpeg" >> ~/Desktop/homebrewer_install_log.txt
+echo "	python" >> ~/Desktop/homebrewer_install_log.txt
+echo "	sshfs" >> ~/Desktop/homebrewer_install_log.txt
+echo "	trash" >> ~/Desktop/homebrewer_install_log.txt
+echo "	node" >> ~/Desktop/homebrewer_install_log.txt
+echo "	tree" >> ~/Desktop/homebrewer_install_log.txt
+echo "	ack" >> ~/Desktop/homebrewer_install_log.txt
+echo "	hub" >> ~/Desktop/homebrewer_install_log.txt
+echo "	git" >> ~/Desktop/homebrewer_install_log.txt
+echo "  pidof" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Homebrew Cask" >> ~/Desktop/homebrewer_install_log.txt
+echo >> ~/Desktop/homebrewer_install_log.txt
+echo "Applications & Plugins:" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Google Chrome" >> ~/Desktop/homebrewer_install_log.txt
+echo "	qlcolorcode" >> ~/Desktop/homebrewer_install_log.txt
+echo "	OBS (Open Broadcaster Software)" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Transmit" >> ~/Desktop/homebrewer_install_log.txt
+echo "	AppCleaner" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Hazel" >> ~/Desktop/homebrewer_install_log.txt
+echo "	qlmarkdown" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Vagrant" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Adobe Flash Player" >> ~/Desktop/homebrewer_install_log.txt
+echo "	qlprettypatch" >> ~/Desktop/homebrewer_install_log.txt
+echo "	VirtualBox" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Atom" >> ~/Desktop/homebrewer_install_log.txt
+echo "	f.lux" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Caffeine" >> ~/Desktop/homebrewer_install_log.txt
+echo "	qlstephen" >> ~/Desktop/homebrewer_install_log.txt
+echo "	GitHub Desktop" >> ~/Desktop/homebrewer_install_log.txt
+echo "	quicklook-json" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Skype" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Transmission" >> ~/Desktop/homebrewer_install_log.txt
+echo "  Keka" >> ~/Desktop/homebrewer_install_log.txt
+echo "  ImageOptim" >> ~/Desktop/homebrewer_install_log.txt
+echo >> ~/Desktop/homebrewer_install_log.txt
+echo "Fonts:" >> ~/Desktop/homebrewer_install_log.txt
+echo "	M-Plus" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Clear Sans" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Roboto" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Ubuntu" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Ubuntu Mono Powerline" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Lato" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Cabin" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Montserrat" >> ~/Desktop/homebrewer_install_log.txt
+echo "	Montserrat Alternates" >> ~/Desktop/homebrewer_install_log.txt
+echo >> ~/Desktop/homebrewer_install_log.txt
+echo "And last but not least, a tool I created:" >> ~/Desktop/homebrewer_install_log.txt
+echo "	tortle (A tool I made to easily enable or disable Tor)" >> ~/Desktop/homebrewer_install_log.txt
+echo;echo
+echo "${bold}Please check your desktop for 'homebrewer_install_log.txt' to see what was just installed.${normal}"
+
+#echo -e "\033[1mYou may need to update your \$PATH in ~/.bash_prfofile:\033[0m"
+#echo -e "\033[1m\$PATH=$(brew --prefix coreutils)/libexec/gnubin:\$PATH\033[0m"
