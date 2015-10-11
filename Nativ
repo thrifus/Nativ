@@ -188,7 +188,6 @@ brew cask install font-montserrat-alternates
 
 clear
 
-######## WORK ON THE INSTALL CHECKING OF THIS LATER! ##########
 touch ~/Desktop/homebrewer_install_log.txt
 chmod 0777 ~/Desktop/homebrewer_install_log.txt
 echo "List of stuff that was just installed:" >> ~/Desktop/homebrewer_install_log.txt
