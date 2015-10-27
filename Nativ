@@ -11,11 +11,11 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 #--- Check for Homebrew and install if we don't have it
-if [[ $(brew) = "-bash: brew: command not found" ]]
-then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-    echo "Homebrew already installed!"
+if [[ $(which brew) = "brew not found" ]]
+    then
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    else
+        echo "Homebrew already installed!"
 fi
 
 #--- Update Homebrew recipes
@@ -23,18 +23,18 @@ brew update
 
 #--- Install GNU core utilities (those that come with OS X are outdated)
 if [[ $(brew ls --versions coreutils) != "" ]]
-then
-    echo "coreutils already installed!"
-else
-    brew install coreutils
+    then
+        echo "coreutils already installed!"
+    else
+        brew install coreutils
 fi
 
 #--- Install GNU find, locate, updatedb, and xargs (g-prefixed)
 if [[ $(brew ls --versions findutils) != "" ]]
-then
-    echo "findutils already installed!"
-else
-    brew install findutils
+    then
+        echo "findutils already installed!"
+    else
+        brew install findutils
 fi
 
 #--- Install Bash 4
@@ -46,82 +46,82 @@ brew install homebrew/dupes/grep
 
 #--- Install others
 if [[ $(brew ls --versions graphicsmagick) != "" ]]
-then
-    echo "graphicsmagick already installed!"
-else
-    brew install graphicsmagick
+    then
+        echo "graphicsmagick already installed!"
+    else
+        brew install graphicsmagick
 fi
 if [[ $(brew ls --versions webkit2png) != "" ]]
-then
-    echo "webkit2png already installed!"
-else
-    brew install webkit2png
+    then
+        echo "webkit2png already installed!"
+    else
+        brew install webkit2png
 fi
 if [[ $(brew ls --versions rename) != "" ]]
-then
-    echo "rename already installed!"
-else
-    brew install rename
+    then
+        echo "rename already installed!"
+    else
+        brew install rename
 fi
 if [[ $(brew ls --versions zopfli) != "" ]]
-then
-    echo "zopfli already installed!"
-else
-    brew install zopfli
+    then
+        echo "zopfli already installed!"
+    else
+        brew install zopfli
 fi
 if [[ $(brew ls --versions ffmpeg) != "" ]]
-then
-    echo "ffmpeg already installed!"
-else
-    brew install ffmpeg
+    then
+        echo "ffmpeg already installed!"
+    else
+        brew install ffmpeg
 fi
 if [[ $(brew ls --versions python) != "" ]]
-then
-    echo "python already installed!"
-else
-    brew install python
+    then
+        echo "python already installed!"
+    else
+        brew install python
 fi
 if [[ $(brew ls --versions trash) != "" ]]
-then
-    echo "trash already installed!"
-else
-    brew install trash
+    then
+        echo "trash already installed!"
+    else
+        brew install trash
 fi
 if [[ $(brew ls --versions node) != "" ]]
-then
-    echo "node already installed!"
-else
-    brew install node
+    then
+        echo "node already installed!"
+    else
+        brew install node
 fi
 if [[ $(brew ls --versions tree) != "" ]]
-then
-    echo "tree already installed!"
-else
-    brew install tree
+    then
+        echo "tree already installed!"
+    else
+        brew install tree
 fi
 if [[ $(brew ls --versions ack) != "" ]]
-then
-    echo "ack already installed!"
-else
-    brew install ack
+    then
+        echo "ack already installed!"
+    else
+        brew install ack
 fi
 if [[ $(brew ls --versions hub) != "" ]]
-then
-    echo "hub already installed!"
-else
-    brew install hub
+    then
+        echo "hub already installed!"
+    else
+        brew install hub
 fi
 if [[ $(brew ls --versions git) != "" ]]
-then
-    echo "git already installed!"
-else
-    brew install git
+    then
+        echo "git already installed!"
+    else
+        brew install git
 fi
 if [[ $(brew -ls --versions pidof) != "" ]]
-then
-    echo "pidof already installed!"
-else
-    brew install pidof
+    then
+        echo "pidof already installed!"
+    else
+        brew install pidof
 fi
 
 #--- Link Python apps to /Applications/
@@ -129,11 +129,11 @@ brew linkapps python
 
 #--- Install the things I've made
 if [[ $(brew ls --versions tortle) != "" ]]
-then
-    echo "Tortle already installed!"
-else
-    brew tap thrifus/Tortle
-    brew install tortle
+    then
+        echo "Tortle already installed!"
+    else
+        brew tap thrifus/Tortle
+        brew install tortle
 fi
 
 #--- Cleanup
@@ -141,10 +141,10 @@ brew cleanup
 
 #--- Install Homebrew Cask
 if [[ $(brew ls --versions brew-cask) != "" ]]
-then
-    echo "Homebrew Cask already installed!"
-else
-    brew install caskroom/cask/brew-cask
+    then
+        echo "Homebrew Cask already installed!"
+    else
+        brew install caskroom/cask/brew-cask
 fi
 
 ######## WORK ON THE INSTALL CHECKING OF THIS LATER! ##########
