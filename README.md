@@ -2,10 +2,6 @@
 Install some cool stuffs. Useful for new OS X images/computers.
 
 <br />
-[![Build Status][travis_IMG]][travis_LINK]
-[travis_IMG]: https://travis-ci.org/thrifus/Nativ.svg
-[travis_LINK]: https://travis-ci.org/thrifus/Nativ
-
 [![Flattr this][flattr_IMG]][flattr_LINK]
 [flattr_IMG]: http://button.flattr.com/flattr-badge-large.png
 [flattr_LINK]: https://flattr.com/submit/auto?user_id=thrifus&url=https%3A%2F%2Fgithub.com%2Fthrifus%2FNativ
