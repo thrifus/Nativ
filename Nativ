@@ -11,7 +11,7 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 #--- Check for Homebrew and install if we don't have it
-if [[ $(which brew) = "brew not found" ]]
+if [[ $(which brew) = "brew not found" ] || [ $(which brew) = "" ]] #--- MAY NOT WORK, RUSTY AND DONE QUICKLY
     then
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     else
